@@ -15,7 +15,7 @@
         <!-- HTMX dynamically fetches the articles list from the backend -->
         <!-- ADD hx-credentials="include" ATTRIBUTE BELOW -->
         <div id="articles-list" 
-             hx-get="https://fortexx-labs-api.azurewebsites.net/api/articles" 
+             hx-get="/api/articles" 
              hx-trigger="load" 
              hx-credentials="include">
             <!-- Articles will be dynamically inserted here by HTMX -->
@@ -25,7 +25,7 @@
     <footer>
         <!-- HTMX button to load the article submission form from the backend -->
         <!-- ADD hx-credentials="include" ATTRIBUTE BELOW -->
-        <button hx-get="https://fortexx-labs-api.azurewebsites.net/api/articles/add" 
+        <button hx-get="/api/articles/add" 
                 hx-target="#articles-list" 
                 hx-credentials="include">
             Add Article
