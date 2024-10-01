@@ -21,7 +21,7 @@ jobs:
           lfs: false
 
       - name: Set Python Version for Azure Functions
-        run: echo "PYTHON_VERSION=3.11" >> $GITHUB_ENV
+        run: echo "PYTHON_VERSION=3.10" >> $GITHUB_ENV
   
       - name: Build And Deploy
         id: builddeploy
