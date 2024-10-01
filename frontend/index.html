@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Articles Management</title>
+    <script src="https://unpkg.com/htmx.org"></script> <!-- Keeping HTMX included -->
+</head>
+<body>
+    <header>
+        <h1>Articles</h1>
+    </header>
+
+    <main>
+        <!-- HTMX dynamically fetches the articles list from the backend -->
+        <!-- ADD hx-credentials="include" ATTRIBUTE BELOW -->
+        <div id="articles-list" 
+             hx-get="https://fortexx-labs-api.azurewebsites.net/api/articles" 
+             hx-trigger="load" 
+             hx-credentials="include">
+            <!-- Articles will be dynamically inserted here by HTMX -->
+        </div>
+    </main>
+
+    <footer>
+        <!-- HTMX button to load the article submission form from the backend -->
+        <!-- ADD hx-credentials="include" ATTRIBUTE BELOW -->
+        <button hx-get="https://fortexx-labs-api.azurewebsites.net/api/articles/add" 
+                hx-target="#articles-list" 
+                hx-credentials="include">
+            Add Article
+        </button>
+    </footer>
+</body>
+</html>

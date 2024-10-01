@@ -1,0 +1,6 @@
+azure-functions
+pydantic
+strawberry-graphql
+python-fasthtml
+azure-cosmos
+# htmx

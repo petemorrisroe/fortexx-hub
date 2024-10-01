@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Article List{% endblock %}
+{% block content %}
+<h2>Articles</h2>
+<ul>
+    {% for article in articles %}
+    <li>{{ article.title }} ({{ article.category }})</li>
+    {% endfor %}
+</ul>
+<button hx-get="/articles/add" hx-target="main">Add Article</button>
+{% endblock %}
+

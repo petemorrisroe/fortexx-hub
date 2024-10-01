@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Add Article{% endblock %}
+{% block content %}
+<form hx-post="/articles/add" hx-target="main">
+    <label>Title: <input type="text" name="title" required></label><br>
+    <label>Category: <input type="text" name="category" required></label><br>
+    <label>Abstract: <textarea name="abstract"></textarea></label><br>
+    <label>Body: <textarea name="body"></textarea></label><br>
+    <label>Tags: <input type="text" name="tags"></label><br>
+    <button type="submit">Add Article</button>
+</form>
+{% endblock %}
