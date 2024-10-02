@@ -20,8 +20,8 @@ async def add_article(req: func.HttpRequest) -> func.HttpResponse:
         return hx.redirect("/articles")
     return HTMLTemplateResponse("article_form.html")
 
-@rt("/test")
-async def get():
-    return Titled("FastHTML", P("Let's do this!"))
+@rt.get('/test')
+async def test_endpoint(req: HttpRequest) -> HttpResponse:
+    return HttpResponse("Test successful! The API is working.", status_code=200)
 
-serve()
+

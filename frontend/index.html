@@ -14,6 +14,8 @@
     <main>
         <!-- HTMX dynamically fetches the articles list from the backend -->
         <!-- ADD hx-credentials="include" ATTRIBUTE BELOW -->
+        <div id="test-result" hx-get="/api/test" hx-trigger="load"></div>
+
         <div id="articles-list" 
              hx-get="/api/test" 
              hx-trigger="load" 
