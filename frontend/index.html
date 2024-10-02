@@ -15,7 +15,9 @@
         <!-- HTMX dynamically fetches the articles list from the backend -->
         <!-- ADD hx-credentials="include" ATTRIBUTE BELOW -->
         <div id="articles-list" 
-             hx-get="/api/test" >
+             hx-get="/api/test" 
+             hx-trigger="load" 
+             hx-credentials="include">
             <!-- Articles will be dynamically inserted here by HTMX -->
         </div>
     </main>
