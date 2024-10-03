@@ -20,7 +20,19 @@ jobs:
           submodules: true
           lfs: false
 
-          
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+            python-version: '3.11'
+        
+      - name: Install dependencies
+        run: |
+            pip install -r api/requirements.txt
+        
+      - name: Run Uvicorn Server
+        run: |
+            uvicorn api.__init__:app --host 0.0.0.0 --port 8000    
+      
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1

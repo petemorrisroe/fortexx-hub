@@ -23,4 +23,4 @@ async def add_article(req: HttpRequest) -> HttpResponse:
     return f"Article titled '{data.get('title')}' has been added."
 
 if __name__ == "__main__":
-    uvicorn.run("__init__:app", host="0.0.0.0", port=8000, log_level="info")
+    uvicorn.run("api.__init__:app", log_level="info")
