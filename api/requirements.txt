@@ -1,7 +1,7 @@
 azure-functions
 pydantic
 strawberry-graphql
-python-fasthtml
+python-fasthtml==<latest_version_with_HTMLTemplateResponse>
 azure-cosmos
 uvicorn
 htmx
