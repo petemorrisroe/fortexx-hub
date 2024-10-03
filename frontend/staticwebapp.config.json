@@ -1,6 +1,20 @@
 {
-    "platform": {
-      "apiRuntime": "python:3.10"
+  "platform": {
+    "apiRuntime": "python:3.10"
+  },
+  "routes": [
+    {
+      "route": "/api/*",
+      "allowedRoles": ["anonymous", "authenticated"]
     }
-    
+  ],
+  "responseOverrides": {
+    "401": {
+      "redirect": "/login",
+      "statusCode": 302
+    },
+    "404": {
+      "rewrite": "/index.html"
+    }
   }
+}

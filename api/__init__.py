@@ -1,9 +1,9 @@
 import azure.functions as func
 from fasthtml import HTMLTemplateResponse, rt
 from fasthtml.common import *
-
 from cosmos_db import read_articles, write_article
 from htmx import hx
+import uvicorn
 
 app, rt = fast_app()
 
@@ -22,4 +22,5 @@ async def add_article(req: HttpRequest) -> HttpResponse:
     data = req.form
     return f"Article titled '{data.get('title')}' has been added."
 
-serve()
+if __name__ == "__main__":
+    uvicorn.run("__init__:app", host="0.0.0.0", port=8000, log_level="info")
