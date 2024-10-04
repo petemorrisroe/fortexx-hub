@@ -1,5 +1,6 @@
 import azure.functions as func
-from fasthtml import HTMLTemplateResponse, rt
+
+# from fasthtml import rt
 from fasthtml.common import *
 from cosmos_db import read_articles, write_article
 from htmx import hx
