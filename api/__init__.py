@@ -2,7 +2,7 @@ import azure.functions as func
 
 # from fasthtml import rt
 from fasthtml.common import *
-from cosmos_db import read_articles, write_article
+from api.cosmos_db import read_articles, write_article
 from htmx import hx
 import uvicorn
 
