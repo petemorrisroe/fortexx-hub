@@ -3,11 +3,11 @@ import os
 
 COSMOS_URL = os.getenv('COSMOS_URL')
 COSMOS_KEY = os.getenv('COSMOS_KEY')
-DATABASE_NAME = "fortexx"
-CONTAINER_NAME = "article"
+DATABASE_NAME = 'fortexx'
+CONTAINER_NAME = 'article'
 
-# Initialize CosmosClient with a dictionary containing the key
-client = CosmosClient(COSMOS_URL, COSMOS_KEY)
+# Provide the key directly
+client = CosmosClient(COSMOS_URL, credential=COSMOS_KEY)
 database = client.get_database_client(DATABASE_NAME)
 container = database.get_container_client(CONTAINER_NAME)
 
