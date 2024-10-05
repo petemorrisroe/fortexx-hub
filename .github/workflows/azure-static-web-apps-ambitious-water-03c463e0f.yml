@@ -30,6 +30,9 @@ jobs:
             pip install -r api/requirements.txt
         
       - name: Run Uvicorn Server
+        env:
+          COSMOS_URL: ${{ secrets.COSMOS_URL }}
+          COSMOS_KEY: ${{ secrets.COSMOS_KEY }}
         run: |
             uvicorn api.__init__:app --host 0.0.0.0 --port 8000    
       

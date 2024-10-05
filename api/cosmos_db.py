@@ -1,9 +1,10 @@
 from azure.cosmos import CosmosClient
 import os
 
+
+# Now you can access your variables from the environment
 COSMOS_URL = os.getenv('COSMOS_URL')
 COSMOS_KEY = os.getenv('COSMOS_KEY')
-
 
 DATABASE_NAME = 'fortexx'
 CONTAINER_NAME = 'article'
