@@ -1,15 +1,25 @@
+import logging
 from fasthtml.common import *
 from .schema import schema
 from .cosmos_client import container
-from .models import Article
+from .models import ArticleModel
 from pydantic import ValidationError
+
+# Set up logging
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
 
 app, rt = fast_app()
 
 @app.get('/api/articles')
 def list_articles():
-    items = container.read_all_items()
-    return Div(*[Div(H3(item["title"]), P(item["abstract"])) for item in items])
+    try:
+        items = container.read_all_items()
+        logger.debug(f"Fetched items from Cosmos DB: {items}")
+        return Div(*[Div(H3(item["title"]), P(item["abstract"])) for item in items])
+    except Exception as e:
+        logger.error(f"Error accessing Cosmos DB: {e}")
+        return Div(P(f"Error: Unable to access articles"))
 
 @app.post('/api/articles')
 def create_article(title: str, abstract: str, body: str):
@@ -23,9 +33,14 @@ def create_article(title: str, abstract: str, body: str):
             "body": article_data.body
         }
         container.create_item(new_article)
+        logger.debug(f"Created new item in Cosmos DB: {new_article}")
         return Div(H3(new_article["title"]), P(new_article["abstract"]))
     except ValidationError as e:
+        logger.warning(f"Validation error: {e}")
         return Div(P(f"Error: {e}"))
+    except Exception as e:
+        logger.error(f"Error creating new article in Cosmos DB: {e}")
+        return Div(P(f"Error: Unable to create new article"))
 
 @app.route('/graphql')
 def graphql(request):
