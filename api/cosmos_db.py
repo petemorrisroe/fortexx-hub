@@ -11,7 +11,7 @@ DATABASE_NAME = 'fortexx'
 CONTAINER_NAME = 'article'
 
 # Provide the key directly
-client = CosmosClient(COSMOS_URL, COSMOS_KEY)
+client = CosmosClient(COSMOS_URL, credential={'masterKey': COSMOS_KEY})
 database = client.get_database_client(DATABASE_NAME)
 container = database.get_container_client(CONTAINER_NAME)
 
