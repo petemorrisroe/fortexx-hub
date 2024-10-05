@@ -7,14 +7,5 @@
       "route": "/api/*",
       "allowedRoles": ["anonymous", "authenticated"]
     }
-  ],
-  "responseOverrides": {
-    "401": {
-      "redirect": "/login",
-      "statusCode": 302
-    },
-    "404": {
-      "rewrite": "/index.html"
-    }
-  }
+  ]
 }
