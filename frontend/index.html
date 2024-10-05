@@ -9,6 +9,8 @@
     <title>My Azure SWA App</title>
 </head>
 <body class="bg-gray-100 p-4">
+    <div id="health-check" hx-get="/api/test" hx-trigger="load"></div>
+
     <h1 class="text-3xl font-bold mb-4">Articles</h1>
     <div id="articles" hx-get="/api/articles" hx-trigger="load" hx-swap="innerHTML"></div>
 

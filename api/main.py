@@ -11,6 +11,10 @@ logger = logging.getLogger(__name__)
 
 app, rt = fast_app()
 
+@app.get('/api/test')
+def health_check():
+    return Div(P("I'm alive"))
+
 @app.get('/api/articles')
 def list_articles():
     try:
