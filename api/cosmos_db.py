@@ -6,6 +6,7 @@ import os
 COSMOS_URL = os.getenv('COSMOS_URL')
 COSMOS_KEY = os.getenv('COSMOS_KEY')
 
+
 DATABASE_NAME = 'fortexx'
 CONTAINER_NAME = 'article'
 
