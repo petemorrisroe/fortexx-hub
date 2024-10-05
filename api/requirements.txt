@@ -3,7 +3,6 @@ pydantic
 strawberry-graphql
 python-fasthtml
 azure-cosmos
-azure-functions
 
 # uvicorn
 # htmx
