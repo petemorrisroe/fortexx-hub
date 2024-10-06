@@ -1,8 +1,8 @@
 azure-functions
 pydantic
 strawberry-graphql
-python-fasthtml
+fastapi
 azure-cosmos
-
+jinja2
 # uvicorn
 # htmx

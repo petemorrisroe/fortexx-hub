@@ -1,9 +1,21 @@
-from azure.cosmos import CosmosClient, PartitionKey
+from azure.cosmos.aio import CosmosClient
+from azure.cosmos import PartitionKey
 import os
 
-client = CosmosClient(os.getenv('COSMOS_URI'), credential=os.getenv('COSMOS_KEY'))
-database = client.get_database_client('fortexx')
-container = database.get_container_client('article')
+URI = os.getenv("COSMOS_URI")
+KEY = os.getenv("COSMOS_KEY")
+
+cosmos_client = CosmosClient(URI, credential=KEY)
+database_name = "my-database"
+container_name = "articles"
+
+async def get_container():
+    database = await cosmos_client.create_database_if_not_exists(id=database_name)
+    container = await database.create_container_if_not_exists(
+        id=container_name, partition_key=PartitionKey(path="/id")
+    )
+    return container
+
 
 
 

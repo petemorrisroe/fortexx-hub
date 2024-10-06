@@ -3,25 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/static/style.css" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/htmx.org@1.7.0"></script>
-    <title>My Azure SWA App</title>
+    <title>Articles Management</title>
+    <script src="https://unpkg.com/htmx.org@1.4.0"></script>
 </head>
-<body class="bg-gray-100 p-4">
-    <div id="health-check" hx-get="/api/test" hx-trigger="load"></div>
-
-    <h1 class="text-3xl font-bold mb-4">Articles</h1>
-    <div id="articles" hx-get="/api/articles" hx-trigger="load" hx-swap="innerHTML"></div>
-
-    <h2 class="text-xl font-semibold mt-8">Add New Article</h2>
-    <form hx-post="/api/articles" hx-target="#articles" hx-swap="outerHTML">
-        <input type="text" name="title" placeholder="Title" required class="border p-2 mb-2">
-        <textarea name="abstract" placeholder="Abstract" required class="border p-2 mb-2"></textarea>
-        <button type="submit" class="bg-blue-500 text-white px-4 py-2">Submit</button>
+<body>
+    <h1>Articles</h1>
+    <form hx-post="/api/add_article" hx-target="#article-list">
+        <input type="text" name="title" placeholder="Article Title">
+        <textarea name="content" placeholder="Content"></textarea>
+        <button type="submit">Submit</button>
     </form>
+    <div id="article-list" hx-get="/api/articles" hx-trigger="load"></div>
 </body>
 </html>
+
 
 
 

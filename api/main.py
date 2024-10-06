@@ -1,57 +1,37 @@
-import logging
-from fasthtml.common import *
-from .schema import schema
-from .cosmos_client import container
-from .models import ArticleModel
-from pydantic import ValidationError
+from fastapi import FastAPI, Request
+from fastapi.responses import HTMLResponse
+from strawberry.fastapi import GraphQLRouter
+from jinja2 import Template
+from pydantic import BaseModel
+from .cosmos_client import get_container
+import strawberry
 
-# Set up logging
-logging.basicConfig(level=logging.DEBUG)
-logger = logging.getLogger(__name__)
+app = FastAPI()
 
-app, rt = fast_app()
+@app.on_event("startup")
+async def startup_db_client():
+    app.container = await get_container()
 
-@app.get('/api/test')
-def health_check():
-    return Div(P("I'm alive"))
+@app.get("/", response_class=HTMLResponse)
+async def home():
+    template = Template("<h1>Welcome to Azure Static Web App with FastAPI!</h1>")
+    return template.render()
 
-@app.get('/api/articles')
-def list_articles():
-    try:
-        items = container.read_all_items()
-        logger.debug(f"Fetched items from Cosmos DB: {items}")
-        return Div(*[Div(H3(item["title"]), P(item["abstract"])) for item in items])
-    except Exception as e:
-        logger.error(f"Error accessing Cosmos DB: {e}")
-        return Div(P(f"Error: Unable to access articles"))
+@app.get("/api/test")
+async def test_endpoint():
+    return {"message": "I'm alive"}
 
-@app.post('/api/articles')
-def create_article(title: str, abstract: str, body: str):
-    try:
-        # Use Pydantic to validate the data
-        article_data = ArticleModel(title=title, abstract=abstract, body=body)
-        new_article = {
-            "id": f"fx{len(container.read_all_items()) + 1}",
-            "title": article_data.title,
-            "abstract": article_data.abstract,
-            "body": article_data.body
-        }
-        container.create_item(new_article)
-        logger.debug(f"Created new item in Cosmos DB: {new_article}")
-        return Div(H3(new_article["title"]), P(new_article["abstract"]))
-    except ValidationError as e:
-        logger.warning(f"Validation error: {e}")
-        return Div(P(f"Error: {e}"))
-    except Exception as e:
-        logger.error(f"Error creating new article in Cosmos DB: {e}")
-        return Div(P(f"Error: Unable to create new article"))
+# Strawberry GraphQL integration
+@strawberry.type
+class Query:
+    @strawberry.field
+    async def hello(self, name: str) -> str:
+        return f"Hello {name}!"
 
-@app.route('/graphql')
-def graphql(request):
-    return schema.execute_sync(request.body.decode())
+schema = strawberry.Schema(query=Query)
+graphql_app = GraphQLRouter(schema)
+app.include_router(graphql_app, prefix="/graphql")
 
-if __name__ == '__main__':
-    serve()
 
 
 
