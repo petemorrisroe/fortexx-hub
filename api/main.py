@@ -1,5 +1,6 @@
 from fastapi import FastAPI, Request, HTTPException
-from fastapi.responses import HTMLResponse, JSONResponse
+from fastapi.responses import JSONResponse, HTMLResponse
+from fastapi.middleware.cors import CORSMiddleware
 from strawberry.fastapi import GraphQLRouter
 from jinja2 import Template
 from pydantic import BaseModel
@@ -8,14 +9,20 @@ import strawberry
 
 app = FastAPI()
 
+# Add CORS middleware
+origins = ["*"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 @app.on_event("startup")
 async def startup_db_client():
     app.container = await get_container()
-
-@app.get("/", response_class=HTMLResponse)
-async def home():
-    template = Template("<h1>Welcome to Azure Static Web App with FastAPI!</h1>")
-    return template.render()
 
 @app.get("/test")
 async def test_endpoint():
@@ -38,7 +45,7 @@ async def get_articles():
     return items
 
 # Endpoint to add a new article
-@app.post("/api/articles")
+@app.post("/articles")
 async def add_article(article: Article):
     container = app.container
     try:
