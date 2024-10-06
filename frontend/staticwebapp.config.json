@@ -1,6 +1,6 @@
 {
   "platform": {
-    "apiRuntime": "python:3.09"
+    "apiRuntime": "python:3.10"
   },
   "routes": [
     {
@@ -14,10 +14,6 @@
     {
       "route": "/api/*",
       "rewrite": "/api/:splat"
-    },
-    {
-      "route": "/api/test",
-      "rewrite": "/api/test"
     }
   ],
   "navigationFallback": {
@@ -31,3 +27,4 @@
     ".json": "application/json"
   }
 }
+
