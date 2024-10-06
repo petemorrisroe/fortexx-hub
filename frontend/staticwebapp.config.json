@@ -1,5 +1,33 @@
 {
   "platform": {
     "apiRuntime": "python:3.09"
+  },
+  "routes": [
+    {
+      "route": "/",
+      "rewrite": "/"
+    },
+    {
+      "route": "/graphql",
+      "rewrite": "/api/graphql"
+    },
+    {
+      "route": "/api/*",
+      "rewrite": "/api/:splat"
+    },
+    {
+      "route": "/api/test",
+      "rewrite": "/api/test"
+    }
+  ],
+  "navigationFallback": {
+    "rewrite": "/",
+    "exclude": ["/api/*", "/graphql", "/static/*"]
+  },
+  "mimeTypes": {
+    ".html": "text/html",
+    ".css": "text/css",
+    ".js": "text/javascript",
+    ".json": "application/json"
   }
 }
