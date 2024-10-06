@@ -8,12 +8,8 @@
       "rewrite": "/index.html"
     },
     {
-      "route": "/test",
-      "rewrite": "/api/test"
-    },
-    {
-      "route": "/articles",
-      "rewrite": "/api/articles"
+      "route": "/api/*",
+      "rewrite": "/api/*"
     }
   ],
   "navigationFallback": {
