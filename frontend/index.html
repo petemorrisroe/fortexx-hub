@@ -7,6 +7,8 @@
     <script src="https://unpkg.com/htmx.org@1.4.0"></script>
 </head>
 <body>
+    <div id="article-test" hx-get="/api/test" hx-trigger="load"></div>
+
     <h1>Articles</h1>
     <form hx-post="/api/add_article" hx-target="#article-list">
         <input type="text" name="title" placeholder="Article Title">
