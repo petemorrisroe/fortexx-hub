@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Articles Management</title>
+    <title>Home</title>
     <script src="https://unpkg.com/htmx.org@1.4.0"></script>
 </head>
 <body>
-    <div id="article-test" hx-get="/api/test" hx-trigger="load"></div>
+    <h1>Welcome to the Articles Application</h1>
+    <a href="article_form.html">Add New Article</a><br>
+    <a href="article_list.html">View Articles</a>
 
-    <h1>Articles</h1>
-    <form hx-post="/api/add_article" hx-target="#article-list">
-        <input type="text" name="title" placeholder="Article Title">
-        <textarea name="content" placeholder="Content"></textarea>
-        <button type="submit">Submit</button>
-    </form>
-    <div id="article-list" hx-get="/api/articles" hx-trigger="load"></div>
+    <div hx-get="/api/test" hx-trigger="load" hx-target="#health-status" hx-swap="innerHTML">
+        Checking API health...
+    </div>
+    <div id="health-status"></div>
 </body>
 </html>
+
 
 
 

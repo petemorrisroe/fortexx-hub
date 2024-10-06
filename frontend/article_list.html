@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article List</title>
+    <script src="https://unpkg.com/htmx.org@1.4.0"></script>
+</head>
+<body>
+    <h1>Articles</h1>
+    <div hx-get="/api/articles" hx-trigger="load" hx-target="#articles" hx-swap="innerHTML">
+        <p>Loading articles...</p>
+    </div>
+    <div id="articles"></div>
+</body>
+</html>

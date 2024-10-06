@@ -5,11 +5,15 @@
   "routes": [
     {
       "route": "/",
-      "rewrite": "/"
+      "rewrite": "/index.html"
     },
     {
       "route": "/graphql",
       "rewrite": "/api/graphql"
+    },
+    {
+      "route": "/api/test",
+      "rewrite": "/api/test"
     },
     {
       "route": "/api/*",
@@ -17,8 +21,8 @@
     }
   ],
   "navigationFallback": {
-    "rewrite": "/",
-    "exclude": ["/api/*", "/graphql", "/static/*"]
+    "rewrite": "/index.html",
+    "exclude": ["/api/*", "/graphql"]
   },
   "mimeTypes": {
     ".html": "text/html",
@@ -27,4 +31,5 @@
     ".json": "application/json"
   }
 }
+
 
