@@ -17,7 +17,7 @@ async def home():
     template = Template("<h1>Welcome to Azure Static Web App with FastAPI!</h1>")
     return template.render()
 
-@app.get("/api/test")
+@app.get("/test")
 async def test_endpoint():
     return {"message": "I'm alive"}
 
@@ -28,7 +28,7 @@ class Article(BaseModel):
     content: str
 
 # Endpoint to get all articles
-@app.get("/api/articles")
+@app.get("/articles")
 async def get_articles():
     container = app.container
     query = "SELECT * FROM c"
