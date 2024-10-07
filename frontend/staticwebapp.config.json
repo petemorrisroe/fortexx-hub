@@ -1,19 +1,19 @@
 {
   "platform": {
-      "apiRuntime": "python:3.10"
+    "apiRuntime": "python:3.10"
   },
   "routes": [
-      {
-          "route": "/",
-          "rewrite": "/index.html"
-      },
-      {
-          "route": "/api/*",
-          "rewrite": "/api/:splat"
-      }
+    {
+      "route": "/",
+      "rewrite": "/index.html"
+    },
+    {
+      "route": "/api/*",
+      "rewrite": "/api"
+    }
   ],
   "navigationFallback": {
-      "rewrite": "/index.html",
-      "exclude": ["/api/*"]
+    "rewrite": "/index.html",
+    "exclude": ["/api/*"]
   }
 }
