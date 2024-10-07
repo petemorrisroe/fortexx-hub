@@ -9,7 +9,11 @@
     },
     {
       "route": "/api/*",
-      "rewrite": "/api"
+      "rewrite": "/api/*"
     }
-  
+  ],
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": ["/api/*"]
+  }
 }
