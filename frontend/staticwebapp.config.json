@@ -2,15 +2,10 @@
   "platform": {
       "apiRuntime": "python:3.10"
   },
- "routes": [
+"routes": [
     {
       "route": "/api/{*path}",
       "allowedRoles": ["anonymous"]
-    },
-    {
-      "route": "/{*all}",
-      "rewrite": "/index.html",
-      "statusCode": 200
     }
   ]
 }
