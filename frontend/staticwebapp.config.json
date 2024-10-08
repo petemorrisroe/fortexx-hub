@@ -4,17 +4,9 @@
   },
   "routes": [
     {
-      "route": "/api/{*path}",
-      "allowedRoles": ["anonymous"]
-    },
-    {
-      "route": "/{*all}",
-      "rewrite": "/index.html",
-      "statusCode": 200
-    },
-    {
-      "route": "/{*.}",
+      "route": "/api/test",
       "allowedRoles": ["anonymous"]
     }
   ]
 }
+
