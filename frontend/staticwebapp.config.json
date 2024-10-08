@@ -1,5 +1,11 @@
 {
   "platform": {
       "apiRuntime": "python:3.10"
-  }
+  },
+  "routes": [
+    {
+      "route": "/api/{*path}",
+      "allowedRoles": ["anonymous"]
+    }
+  ]
 }
