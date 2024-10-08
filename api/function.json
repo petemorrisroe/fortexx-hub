@@ -4,7 +4,7 @@
         "authLevel": "anonymous",
         "type": "httpTrigger",
         "direction": "in",
-        "name": "req1",
+        "name": "req2",
         "methods": ["get"],
         "route": "test"
       },
