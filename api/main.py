@@ -1,14 +1,14 @@
-from fastapi import FastAPI
+# from fastapi import FastAPI
 
-app = FastAPI()
+# app = FastAPI()
 
-@app.get("/", response_class=HTMLResponse)
-async def home():
-    return "<h1>Welcome to the Articles Application</h1>"
+# @app.get("/", response_class=HTMLResponse)
+# async def home():
+#     return "<h1>Welcome to the Articles Application</h1>"
 
-@app.get("/api/test")
-async def test_endpoint():
-    return {"message": "I'm alive"}
+# @app.get("/api/test")
+# async def test_endpoint():
+#     return {"message": "I'm alive"}
 
 # @app.get("/api/test")
 # async def test_endpoint():
