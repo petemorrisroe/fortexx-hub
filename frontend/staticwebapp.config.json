@@ -4,7 +4,7 @@
   },
   "routes": [
     {
-      "route": "/api/test",
+      "route": "/api/*",
       "allowedRoles": ["anonymous"]
     }
   ]
