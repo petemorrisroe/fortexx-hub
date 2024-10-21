@@ -8,7 +8,7 @@ app = fastapi.FastAPI()
 # async def home():
 #     return "<h1>Welcome to the Articles Application</h1>"
 
-@app.get("/api/test")
+@app.get("/test")
 async def test_endpoint():
     return {"message": "I'm alive"}
 
