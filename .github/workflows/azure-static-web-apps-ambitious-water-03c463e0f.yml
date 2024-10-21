@@ -53,7 +53,7 @@ jobs:
           ###### End of Repository/Build Configurations ######
        
       #- name: Deploy Azure Functions API
-      #  if: ${{ github.event_name == 'push' }}  # Ensure it only runs on push events
+      # - if: ${{ github.event_name == 'push' }}  # Ensure it only runs on push events
       #  uses: Azure/functions-action@v1
       #  with:
       #      app-name: 'fortexx-labs-api'     # Name of the existing Function App

@@ -7,6 +7,12 @@
 </head>
 <body>
     <h1>Welcome to the Articles Application</h1>
+
+    <div hx-get="/api/test" hx-trigger="load" hx-target="#message">
+        <p id="message">Loading...</p>
+    </div>
+
+
     <button hx-get="/api/test" hx-target="#response">Check API health...</button>
     <div id="response"></div>
     <script src="https://unpkg.com/htmx.org@1.4.1"></script>
