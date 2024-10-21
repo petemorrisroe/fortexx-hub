@@ -2,11 +2,18 @@
 {% block title %}Article List{% endblock %}
 {% block content %}
 <h2>Articles</h2>
-<ul>
+
+<div hx-get="/api/test" hx-trigger="load" hx-target="#message">
+        <p id="message">Loading...</p>
+    </div>
+
+
+
+<!-- <ul>
     {% for article in articles %}
     <li>{{ article.title }} ({{ article.category }})</li>
     {% endfor %}
-</ul>
+</ul> -->
 <button hx-get="/articles/add" hx-target="main">Add Article</button>
 {% endblock %}
 
