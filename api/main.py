@@ -10,6 +10,7 @@ app = fastapi.FastAPI()
 
 @app.get("/test")
 async def test_endpoint():
+    logging.info("Test API has been called")
     return {"message": "I'm alive"}
 
 # @app.get("/api/test")
